@@ -8,7 +8,7 @@ import AuthDataProvider, { AuthDataContext } from "../context/AuthDataProvider.j
 import axios from 'axios'
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../utils/Firebase.js";
-import { UserDataContext } from "../context/userDataProvider.jsx";
+import { UserDataContext } from "../context/userContext.jsx";
 
 
 function Registration() {
@@ -47,6 +47,8 @@ function Registration() {
           name, email
         },{withCredentials:true})
         console.log(result.data)
+         getCurrentUser.getCurrentUser();
+        navigate("/");
       }catch(error){
         console.log(error)
       }

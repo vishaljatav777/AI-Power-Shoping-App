@@ -8,7 +8,7 @@ import AuthProvider, { AuthDataContext } from "../context/AuthDataProvider.jsx";
 import axios from "axios";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../utils/Firebase.js";
-import { UserDataContext } from "../context/userDataProvider.jsx";
+import { UserDataContext } from "../context/userContext.jsx";
 
 
 
@@ -47,6 +47,8 @@ function Login() {
                   name, email
                 },{withCredentials:true})
                 console.log(result.data)
+                 getCurrentUser.getCurrentUser();
+                  navigate("/");
               }catch(error){
                 console.log(error)
               }
@@ -116,7 +118,7 @@ function Login() {
                 onClick={() => setshow((prev) => !prev)}
               />
             )}
-            <button className="w-[100%] h-[50px] bg-[#6060f5] rounded-lg flex items-center justify-center mt-[20px] text-[17px] font-semibold">
+            <button className="w-[100%] h-[50px] bg-[#6060f5] rounded-lg flex items-center justify-center mt-[20px] text-[17px] font-semibold cursor-pointerr">
               Login
             </button>
             <p className="flex gap-[10px]">

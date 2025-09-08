@@ -12,3 +12,5 @@ export const getcorentuser = async (req,res) => {
         return res.status(500).json({message:`getcorrentuser Error ${error}`})
     }
 }
+
+
