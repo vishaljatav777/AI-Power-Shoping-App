@@ -18,9 +18,8 @@ function UserContext({ children }) {
 
   const getCurrentUser = useCallback(async () => {
     try {
-      let result = await axios.post(
+      let result = await axios.get(
         serverUrl + "/api/user/getcurrentuser",
-        {},
         { withCredentials: true }
       );
       setUserData(result.data);

@@ -6,7 +6,7 @@ import { logout } from "../controller/authcontroller.js";
 
 let userRoutes = express.Router()
 
-userRoutes.post("/getcurrentuser",isAuth,getcorentuser)
+userRoutes.get("/getcurrentuser",isAuth,getcorentuser)
 userRoutes.get("/logout", logout);
 
 
