@@ -1,7 +1,7 @@
 import User from "../model/usermodel.js";
 import validator from "validator";
 import bcrypt from "bcryptjs";
-import { gentoken } from "../config/token.js";
+import { gentoken, gentoken1 } from "../config/token.js";
 
 export const registration = async (req, res) => {
   try {
@@ -94,3 +94,24 @@ export const googlelogin = async (req,res) => {
     return res.status(500).json({ message: `google login error: ${error.message}` }); 
   }
 }
+
+
+export const adminLogin = async (req, res) => {
+  try {
+    let { email, password } = req.body;
+    if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+      let token = await gentoken1(email);
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: false,
+        sameSite: "Strict",
+        maxAge: 1 * 24 * 60 * 60 * 1000,
+      });
+      return res.status(200).json(token);
+    }
+    return res.status(400).json({ message: "invalid credentials" });
+  } catch (error) {
+    console.log("admin login error:", error);
+    return res.status(500).json({ message: `admin login error: ${error.message}` });
+  }
+};

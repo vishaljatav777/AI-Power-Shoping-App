@@ -122,7 +122,7 @@ function Registration() {
                 onClick={() => setshow((prev) => !prev)}
               />
             )}
-            <button className="w-[100%] h-[50px] bg-[#6060f5] rounded-lg flex items-center justify-center mt-[20px] text-[17px] font-semibold">
+            <button className="w-[100%] h-[50px] bg-[#6060f5] rounded-lg flex items-center justify-center mt-[20px] text-[17px] font-semibold cursor-pointer">
               Create Account
             </button>
             <p className="flex gap-[10px]">
